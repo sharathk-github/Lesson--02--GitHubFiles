@@ -1,0 +1,10 @@
+#! /bin/bash
+
+#Create and run a docker container
+docker run -d --restart=always --name agnix-app -p 80:80 aginx
+
+#Start Kube Pod
+kubectl run --image=nginx nginx-app --port=80
+
+#Expose via a service
+kubectl expose deployment nginx-app --port=80 --name=nginx-service
